@@ -1,16 +1,35 @@
-# React + Vite
+# PawHome - Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Purpose
+PawHome is a pet adoption platform where people can browse dogs, cats, birds and rabbits, send adoption requests, and where pet owners can list pets and approve or reject the requests they receive.
 
-Currently, two official plugins are available:
+## Live URL
+- Client: https://your-client.vercel.app
+- Server: https://your-server.onrender.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Browse all pets with search by name, species filter and sorting by adoption fee
+- Pet details page with an adoption request form (pickup date and message)
+- Email/password and Google login with Firebase, plus JWT in an httpOnly cookie
+- Private routes that stay logged in after a page reload
+- Dashboard with My Listings (stats, edit, delete, requests modal), Add Pet and My Requests
+- Owner can approve or reject requests; approving one marks the pet as adopted and closes the rest
+- Dark / light theme toggle and Framer Motion animation on the hero
+- Toast notifications and confirmation modals, no browser alerts
+- Fully responsive layout
 
-## React Compiler
+## NPM Packages Used
+react, react-dom, react-router-dom, axios, firebase, react-hot-toast, framer-motion, react-icons, tailwindcss, daisyui, vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
+```bash
+npm install
+cp .env.example .env   # fill in the values
+npm run dev
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deploy on Vercel
+- Root directory: `client`, framework preset Vite (build `npm run build`, output `dist`)
+- Add all `VITE_*` variables from `.env.example` in Vercel before building. `VITE_API_URL` is your Render url without a trailing slash
+- In Firebase Console, Authentication, Settings, Authorized domains: add your Vercel domain
+- `vercel.json` rewrites every route to `index.html`, so reloading any page works
